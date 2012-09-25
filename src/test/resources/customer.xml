@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Customer xmlns:tns="http://www.example.org/customerExample" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/customerExample customer.xsd ">
+  <tns:CustomerId>70894567</tns:CustomerId>
+  <tns:PersonGivenName>David</tns:PersonGivenName>
+  <tns:PersonFamilyName>Eason</tns:PersonFamilyName>
+  <tns:AddressLine1>77 Geary St</tns:AddressLine1>
+  <tns:PostalCode>94108</tns:PostalCode>
+  <tns:City>San Francisco</tns:City>
+  <tns:Region>CA</tns:Region>
+  <tns:Country>USA</tns:Country>
+  <tns:Email>david.eason@mulesoft.com</tns:Email>
+</tns:Customer>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="davideason" created="Thu Sep 20 09:43:15 PDT 2012" guiVersion="3.3.0.M2" id="1348161947273" licenseCode="Unlicensed" licenseType="Unknown" modified="Thu Sep 20 09:43:15 PDT 2012" modifiedBy="davideason" name="Transform Canonical 2 SFDC Contact Map" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer" _dataStructure="OBJECT" _id="__id" _type="Input" id="Metadata0">
+<Record fieldDelimiter="|" name="CustomerType" recordDelimiter="&#10;" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:CustomerId" containerType="" label="ns0:CustomerId" name="ns0_CustomerId" type="integer"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:PersonGivenName" containerType="" label="ns0:PersonGivenName" name="ns0_PersonGivenName" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:PersonFamilyName" containerType="" label="ns0:PersonFamilyName" name="ns0_PersonFamilyName" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:AddressLine1" containerType="" label="ns0:AddressLine1" name="ns0_AddressLine1" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:PostalCode" containerType="" label="ns0:PostalCode" name="ns0_PostalCode" type="integer"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:City" containerType="" label="ns0:City" name="ns0_City" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:Region" containerType="" label="ns0:Region" name="ns0_Region" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:Country" containerType="" label="ns0:Country" name="ns0_Country" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:Email" containerType="" label="ns0:Email" name="ns0_Email" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/sfdcContactMap" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="feec4420-3a7c-45bd-b259-27488357d8b3">
+<Record fieldDelimiter="|" label="sfdcContactMap" name="sfdcContactMap" recordDelimiter="&#10;" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/sfdcContactMap/FirstName" containerType="" label="FirstName" name="FirstName" type="string"/>
+<Field __sourcePath="{}/sfdcContactMap/LastName" containerType="" label="LastName" name="LastName" type="string"/>
+<Field __sourcePath="{}/sfdcContactMap/Email" containerType="" label="Email" name="Email" type="string"/>
+<Field __sourcePath="{}/sfdcContactMap/magento_customer_id__c" containerType="" label="magento_customer_id__c" name="magento_customer_id__c" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="Maps / List of Maps  WRITER" guiWidth="0" guiX="680" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:collection clover:name="sfdcContactMap" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping">
+  <item clover:inPort="0">
+    <FirstName>$0.FirstName</FirstName>
+    <LastName>$0.LastName</LastName>
+    <Email>$0.Email</Email>
+    <magento_x005fcustomer_x005fid_x005f_x005fc>$0.magento_customer_id__c</magento_x005fcustomer_x005fid_x005f_x005fc>
+  </item>
+</clover:collection>]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="ns0:Customer_to_sfdcContactMap" guiWidth="0" guiX="240" guiY="20" id="REFORMAT0" type="REFORMAT">
+<attr name="transform"><![CDATA[//#CTL2
+
+// Transforms input record into output record.
+function integer transform() {
+$out.0.__id=$in.0.__id;
+		return ALL;
+}
+
+// Called during component initialization.
+// function boolean init() {}
+
+// Called during each graph run before the transform is executed. May be used to allocate and initialize resources
+// required by the transform. All resources allocated within this method should be released
+// by the postExecute() method.
+// function void preExecute() {}
+
+// Called only if transform() throws an exception.
+// function integer transformOnError(string errorMessage, string stackTrace) {}
+
+// Called during each graph run after the entire transform was executed. Should be used to free any resources
+// allocated within the preExecute() method.
+// function void postExecute() {}
+
+// Called to return a user-defined error message when an error occurs.
+// function string getMessage() {}
+]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="XML READER" guiWidth="0" guiX="20" guiY="20" id="XML_READER0" type="XML_READER">
+<attr name="xmlSchemaURL"><![CDATA[./src/test/resources/Customer.xsd]]></attr>
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" outPort="0" sequenceField="__id" xpath="/ns0:Customer">
+  <Mapping cloverField="ns0_CustomerId" namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" trim="true" xpath="ns0:CustomerId"/>
+  <Mapping cloverField="ns0_PersonGivenName" namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" trim="true" xpath="ns0:PersonGivenName"/>
+  <Mapping cloverField="ns0_PersonFamilyName" namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" trim="true" xpath="ns0:PersonFamilyName"/>
+  <Mapping cloverField="ns0_AddressLine1" namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" trim="true" xpath="ns0:AddressLine1"/>
+  <Mapping cloverField="ns0_PostalCode" namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" trim="true" xpath="ns0:PostalCode"/>
+  <Mapping cloverField="ns0_City" namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" trim="true" xpath="ns0:City"/>
+  <Mapping cloverField="ns0_Region" namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" trim="true" xpath="ns0:Region"/>
+  <Mapping cloverField="ns0_Country" namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" trim="true" xpath="ns0:Country"/>
+  <Mapping cloverField="ns0_Email" namespacePaths="ns0=&quot;http://www.example.org/customerExample&quot;" trim="true" xpath="ns0:Email"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="feec4420-3a7c-45bd-b259-27488357d8b3" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+<Edge debugMode="true" fromNode="XML_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="Metadata0" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+</Phase>
+</Graph>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.example.org/customerExample" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Customer" type="cus:CustomerType" xmlns:cus="http://www.example.org/customerExample"/>
+  <xs:complexType name="CustomerType">
+    <xs:sequence>
+      <xs:element type="xs:int" name="CustomerId"/>
+      <xs:element type="xs:string" name="PersonGivenName"/>
+      <xs:element type="xs:string" name="PersonFamilyName"/>
+      <xs:element type="xs:string" name="AddressLine1"/>
+      <xs:element type="xs:int" name="PostalCode"/>
+      <xs:element type="xs:string" name="City"/>
+      <xs:element type="xs:string" name="Region"/>
+      <xs:element type="xs:string" name="Country"/>
+      <xs:element type="xs:string" name="Email"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

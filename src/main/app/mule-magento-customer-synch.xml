@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
+	xmlns:jdbc-ee="http://www.mulesoft.org/schema/mule/ee/jdbc" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:magento="http://www.mulesoft.org/schema/mule/magento" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:context="http://www.springframework.org/schema/context" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.3.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd 
+http://www.mulesoft.org/schema/mule/magento http://www.mulesoft.org/schema/mule/magento/current/mule-magento.xsd 
+http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd 
+http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd 
+http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd 
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd 
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd 
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd 
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd 
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd ">
+    <context:property-placeholder location="mule.${mule.env}.properties"/>
+    <magento:config name="Magento_config" username="admin" password="P@ssw0rd" address="http://magento.enterprise.com/~davideason/mag_ee/index.php/api/v2_soap" doc:name="Magento"/>
+    <data-mapper:config name="Transform_2_Canonical" transformationGraphPath="transform_2_canonical.grf" doc:name="DataMapper"/>
+    <mulexml:namespace-manager>
+        <mulexml:namespace prefix="cust" uri="http://www.example.org/customerExample"/> 
+    </mulexml:namespace-manager>
+    <data-mapper:config name="Transform_2_SFDC" transformationGraphPath="transform_2_sfdc.grf" doc:name="DataMapper"/>
+    <sfdc:config name="Salesforce" username="${sf.user}" password="${sf.password}" securityToken="${sf.token}" doc:name="Salesforce"/>
+    <jdbc-ee:mysql-data-source name="MySQL_Data_Source" user="${db.user}" password="${db.password}" url="jdbc:mysql://localhost:${jdbc.port}/somecompany" transactionIsolation="UNSPECIFIED" doc:name="MySQL Data Source"/>
+    <jdbc-ee:connector name="Database__JDBC_MySQL" dataSource-ref="MySQL_Data_Source" validateConnections="true" queryTimeout="-1" pollingFrequency="0" doc:name="Database"/>
+    <data-mapper:config name="Transform_2_SFDC_Contact" transformationGraphPath="transform_2_sfdc_contact.grf" doc:name="Transform_2_SFDC_Contact"/>
+    <data-mapper:config name="Transform_2_Contact_SFDC" transformationGraphPath="transform_2_contact_sfdc.grf" doc:name="Transform_2_Contact_SFDC"/>
+    <flow name="retrieve-magento-customer-list-and-split" doc:name="retrieve-magento-customer-list-and-split">
+        <poll frequency="10000">
+            <magento:list-customers config-ref="Magento_config" doc:name="Magento"/>
+        </poll>
+        <collection-splitter doc:name="Split Customer List"/>
+        <data-mapper:transform config-ref="Transform_2_Canonical" doc:name="Transform_2_Canonical"/>
+        <all doc:name="All">
+            <processor-chain>
+                <vm:outbound-endpoint exchange-pattern="one-way" path="publish.sfdc.contact" doc:name="publish.sfdc.contact"/>
+            </processor-chain>
+            <processor-chain>
+                <vm:outbound-endpoint exchange-pattern="one-way" path="publish.customer.jdbc" doc:name="publish.customer.jdbc"/>
+            </processor-chain>
+        </all>
+    </flow>
+    <flow name="Publish_SFDC_Contact" doc:name="Publish_SFDC_Contact">
+        <vm:inbound-endpoint exchange-pattern="one-way" path="publish.sfdc.contact" doc:name="publish.sfdc.contact"/>
+        <set-variable variableName="customer_id" value="#[xpath('cust:Customer/cust:CustomerId').text]" doc:name="Store CustomerId"/>
+        <logger message="Customer Id = #[customer_id] and payload = #[payload]" level="INFO" doc:name="Log customer Id"/>
+        <data-mapper:transform config-ref="Transform_2_Contact_SFDC" doc:name="Transform_2_Contact_SFDC"/>
+        <sfdc:upsert config-ref="Salesforce" externalIdFieldName="magento_customer_id__c" type="Contact" doc:name="Upsert Contact">
+            <sfdc:objects ref="#[payload]"/>
+        </sfdc:upsert>
+    </flow>
+    <flow name="Publish2OnPremiseDB" doc:name="Publish2OnPremiseDB">
+        <vm:inbound-endpoint exchange-pattern="one-way" path="publish.customer.jdbc" doc:name="publish.customer.jdbc"/>
+        <object-to-string-transformer doc:name="Object to String"/>
+        <set-variable variableName="customer_id" value="#[xpath('cust:Customer/cust:CustomerId').text]" doc:name="Store CustomerId"/>
+        <enricher doc:name="Query Customer Id">
+            <jdbc-ee:outbound-endpoint exchange-pattern="request-response" queryKey="find" queryTimeout="-1" connector-ref="Database__JDBC_MySQL" doc:name="Query Customer Id">
+                <jdbc-ee:query key="find" value="select * from customer where customerid=#[customer_id]"/>
+            </jdbc-ee:outbound-endpoint>
+            <enrich source="#[payload]" target="#[variable:dbresult]"/>
+        </enricher>
+        <choice doc:name="Choice">
+            <when expression="#[dbresult.size() &gt; 0]">
+                <processor-chain>
+                    <jdbc-ee:outbound-endpoint exchange-pattern="request-response" queryKey="update" queryTimeout="-1" connector-ref="Database__JDBC_MySQL" doc:name="Update Customer">
+                        <jdbc-ee:query key="update" value="update customer set firstname=#[xpath('cust:Customer/cust:PersonGivenName').text], lastname=#[xpath('cust:Customer/cust:PersonFamilyName').text], email=#[xpath('cust:Customer/cust:Email').text] where customerid=#[xpath('cust:Customer/cust:CustomerId').text]"/>
+                    </jdbc-ee:outbound-endpoint>
+                </processor-chain>
+            </when>
+            <otherwise>
+                <processor-chain>
+                    <jdbc-ee:outbound-endpoint exchange-pattern="request-response" queryKey="insert" queryTimeout="-1" connector-ref="Database__JDBC_MySQL" doc:name="Create Customer">
+                        <jdbc-ee:query key="insert" value="insert into customer (customerid, firstname, lastname, email) values(#[xpath('cust:Customer/cust:CustomerId').text], #[xpath('cust:Customer/cust:PersonGivenName').text], #[xpath('cust:Customer/cust:PersonFamilyName').text], #[xpath('cust:Customer/cust:Email').text]);"/>
+                    </jdbc-ee:outbound-endpoint>
+                </processor-chain>
+            </otherwise>
+        </choice>
+        <catch-exception-strategy doc:name="Catch Exception Strategy">
+            <logger message="Exception Encountered." level="ERROR" doc:name="Logger"/>
+        </catch-exception-strategy>
+    </flow>
+</mule>

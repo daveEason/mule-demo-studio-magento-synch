@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="davideason" created="Mon Sep 17 14:15:18 PDT 2012" guiVersion="3.3.0.M2" id="1347946614941" licenseCode="Unlicensed" licenseType="Unknown" modified="Mon Sep 17 14:15:18 PDT 2012" modifiedBy="davideason" name="Transform_2_Canonical" preview-file="${Project_Home}/src/test/resources/customer.groovy" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer" _dataStructure="OBJECT" _id="__id" _type="Output" id="Metadata0">
+<Record fieldDelimiter="|" name="CustomerType" recordDelimiter="&#10;" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:CustomerId" label="ns0:CustomerId" name="ns0_CustomerId" type="integer"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:PersonGivenName" label="ns0:PersonGivenName" name="ns0_PersonGivenName" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:PersonFamilyName" label="ns0:PersonFamilyName" name="ns0_PersonFamilyName" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:AddressLine1" label="ns0:AddressLine1" name="ns0_AddressLine1" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:PostalCode" label="ns0:PostalCode" name="ns0_PostalCode" type="integer"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:City" label="ns0:City" name="ns0_City" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:Region" label="ns0:Region" name="ns0_Region" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:Country" label="ns0:Country" name="ns0_Country" type="string"/>
+<Field __sourcePath="{http://www.example.org/customerExample=ns0}/ns0:Customer/ns0:Email" label="ns0:Email" name="ns0_Email" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/magentoCustomer" _dataStructure="OBJECT" _id="__id" _type="Input" id="5756c4b5-81f3-4d9d-9df6-760ae90ec8e7">
+<Record fieldDelimiter="|" label="magentoCustomer" name="magentoCustomer" recordDelimiter="&#10;" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/middlename" label="middlename" name="middlename" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/password_hash" label="password_hash" name="password_hash" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/group_id" label="group_id" name="group_id" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/store_id" label="store_id" name="store_id" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/class" label="class" name="class" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/lastname" label="lastname" name="lastname" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/firstname" label="firstname" name="firstname" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/taxvat" label="taxvat" name="taxvat" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/suffix" label="suffix" name="suffix" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/updated_at" label="updated_at" name="updated_at" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/email" label="email" name="email" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/prefix" label="prefix" name="prefix" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/created_at" label="created_at" name="created_at" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/customer_id" label="customer_id" name="customer_id" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/website_id" label="website_id" name="website_id" type="string"/>
+<Field __sourcePath="{}/magentoCustomer/increment_id" label="increment_id" name="increment_id" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="Maps / List of Maps  READER" guiWidth="0" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="middlename" trim="true" xpath="middlename"/>
+  <Mapping cloverField="password_hash" trim="true" xpath="password_hash"/>
+  <Mapping cloverField="group_id" trim="true" xpath="group_id"/>
+  <Mapping cloverField="store_id" trim="true" xpath="store_id"/>
+  <Mapping cloverField="class" trim="true" xpath="class"/>
+  <Mapping cloverField="lastname" trim="true" xpath="lastname"/>
+  <Mapping cloverField="firstname" trim="true" xpath="firstname"/>
+  <Mapping cloverField="taxvat" trim="true" xpath="taxvat"/>
+  <Mapping cloverField="suffix" trim="true" xpath="suffix"/>
+  <Mapping cloverField="updated_at" trim="true" xpath="updated_at"/>
+  <Mapping cloverField="email" trim="true" xpath="email"/>
+  <Mapping cloverField="prefix" trim="true" xpath="prefix"/>
+  <Mapping cloverField="created_at" trim="true" xpath="created_at"/>
+  <Mapping cloverField="customer_id" trim="true" xpath="customer_id"/>
+  <Mapping cloverField="website_id" trim="true" xpath="website_id"/>
+  <Mapping cloverField="increment_id" trim="true" xpath="increment_id"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="XML WRITER" guiWidth="0" guiX="680" guiY="20" id="EXT_XML_WRITER0" type="EXT_XML_WRITER" xmlSchemaURL="./src/test/resources/Customer.xsd">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<ns0:Customer xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" xmlns:ns0="http://www.example.org/customerExample" clover:inPort="0">
+  <ns0:CustomerId>$0.ns0_CustomerId</ns0:CustomerId>
+  <ns0:PersonGivenName>$0.ns0_PersonGivenName</ns0:PersonGivenName>
+  <ns0:PersonFamilyName>$0.ns0_PersonFamilyName</ns0:PersonFamilyName>
+  <ns0:AddressLine1>$0.ns0_AddressLine1</ns0:AddressLine1>
+  <ns0:PostalCode>$0.ns0_PostalCode</ns0:PostalCode>
+  <ns0:City>$0.ns0_City</ns0:City>
+  <ns0:Region>$0.ns0_Region</ns0:Region>
+  <ns0:Country>$0.ns0_Country</ns0:Country>
+  <ns0:Email>$0.ns0_Email</ns0:Email>
+</ns0:Customer>]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="magentoCustomer_to_ns0:Customer" guiWidth="0" guiX="240" guiY="20" id="REFORMAT0" type="REFORMAT">
+<attr name="transform"><![CDATA[//#CTL2
+
+// Transforms input record into output record.
+function integer transform() {
+	$out.0.ns0_CustomerId = (isnull($in.0.customer_id) ? 0 : str2integer($in.0.customer_id));
+	$out.0.ns0_Email = $in.0.email;
+	$out.0.ns0_PersonFamilyName = $in.0.lastname;
+	$out.0.ns0_PersonGivenName = $in.0.firstname;
+$out.0.__id=$in.0.__id;
+		return ALL;
+}
+
+// Called during component initialization.
+// function boolean init() {}
+
+// Called during each graph run before the transform is executed. May be used to allocate and initialize resources
+// required by the transform. All resources allocated within this method should be released
+// by the postExecute() method.
+// function void preExecute() {}
+
+// Called only if transform() throws an exception.
+// function integer transformOnError(string errorMessage, string stackTrace) {}
+
+// Called during each graph run after the entire transform was executed. Should be used to free any resources
+// allocated within the preExecute() method.
+// function void postExecute() {}
+
+// Called to return a user-defined error message when an error occurs.
+// function string getMessage() {}
+]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="5756c4b5-81f3-4d9d-9df6-760ae90ec8e7" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="Metadata0" outPort="Port 0 (out)" toNode="EXT_XML_WRITER0:0"/>
+</Phase>
+</Graph>

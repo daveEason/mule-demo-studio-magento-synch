@@ -4,6 +4,6 @@ Simple Mule application to integrate customer data betwee 3 participating system
 - SaaS CRM (Salesforce)
 - Legacy OnPremise DB (mysql)
 
-To run this application it is neccesary to configure a 'run configuration' parameter 'mule.env'.  To do this add the following JVM parameter "-Dmule.env=dev"
+To run this application it is neccesary to configure the required parameters in the /src/main/app/mule-app.properties folder with the required sfdc & mysql login parameters. 
 
 

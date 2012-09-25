@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd 
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd 
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd ">
-    <context:property-placeholder location="mule.${mule.env}.properties"/>
+    <context:property-placeholder location="mule.dev.properties"/>
     <magento:config name="Magento_config" username="admin" password="P@ssw0rd" address="http://magento.enterprise.com/~davideason/mag_ee/index.php/api/v2_soap" doc:name="Magento"/>
     <data-mapper:config name="Transform_2_Canonical" transformationGraphPath="transform_2_canonical.grf" doc:name="DataMapper"/>
     <mulexml:namespace-manager>

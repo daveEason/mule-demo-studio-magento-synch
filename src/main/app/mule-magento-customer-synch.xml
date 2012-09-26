@@ -5,12 +5,12 @@
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd 
 http://www.mulesoft.org/schema/mule/magento http://www.mulesoft.org/schema/mule/magento/current/mule-magento.xsd 
 http://www.mulesoft.org/schema/mule/ee/jdbc http://www.mulesoft.org/schema/mule/ee/jdbc/current/mule-jdbc-ee.xsd 
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd 
 http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd 
 http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd 
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd 
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd 
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd 
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd 
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd ">
     <context:property-placeholder location="mule.dev.properties"/>
     <magento:config name="Magento_config" username="admin" password="P@ssw0rd" address="http://magento.enterprise.com/~davideason/mag_ee/index.php/api/v2_soap" doc:name="Magento"/>
@@ -22,14 +22,19 @@ http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/fil
     <sfdc:config name="Salesforce" username="${sf.user}" password="${sf.password}" securityToken="${sf.token}" doc:name="Salesforce"/>
     <jdbc-ee:mysql-data-source name="MySQL_Data_Source" user="${db.user}" password="${db.password}" url="jdbc:mysql://localhost:${jdbc.port}/somecompany" transactionIsolation="UNSPECIFIED" doc:name="MySQL Data Source"/>
     <jdbc-ee:connector name="Database__JDBC_MySQL" dataSource-ref="MySQL_Data_Source" validateConnections="true" queryTimeout="-1" pollingFrequency="0" doc:name="Database"/>
-    <data-mapper:config name="Transform_2_SFDC_Contact" transformationGraphPath="transform_2_sfdc_contact.grf" doc:name="Transform_2_SFDC_Contact"/>
-    <data-mapper:config name="Transform_2_Contact_SFDC" transformationGraphPath="transform_2_contact_sfdc.grf" doc:name="Transform_2_Contact_SFDC"/>
+    <data-mapper:config name="Transform_2_SFDC_Contact" transformationGraphPath="transform_2_sfdc_contact.grf" doc:name="DataMapper"/>
+    <data-mapper:config name="Transform_2_Contact_SFDC" transformationGraphPath="transform_2_contact_sfdc.grf" doc:name="DataMapper"/>
     <flow name="retrieve-magento-customer-list-and-split" doc:name="retrieve-magento-customer-list-and-split">
         <poll frequency="10000">
             <magento:list-customers config-ref="Magento_config" doc:name="Magento"/>
         </poll>
         <collection-splitter doc:name="Split Customer List"/>
         <data-mapper:transform config-ref="Transform_2_Canonical" doc:name="Transform_2_Canonical"/>
+        <tracking:custom-event event-name="Customer Details" doc:name="Custom business event">
+            <tracking:meta-data key="FirstName" value="#[xpath('cust:Customer/cust:PersonGivenName').text]"/>
+            <tracking:meta-data key="LastName" value="#[xpath('cust:Customer/cust:PersonFamilyName').text]"/>
+            <tracking:meta-data key="CustomerId" value="#[xpath('cust:Customer/cust:CustomerId').text]"/>
+        </tracking:custom-event>
         <all doc:name="All">
             <processor-chain>
                 <vm:outbound-endpoint exchange-pattern="one-way" path="publish.sfdc.contact" doc:name="publish.sfdc.contact"/>

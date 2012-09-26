@@ -131,7 +131,7 @@
             <property value="11" name="auxiliary;index"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="retrieve-magento-customer-list-and-split" entity-id="1b24ff96-3a22-4aa7-bf41-b9704a5ca161">
+    <flow SubFlow="false" name="retrieve-magento-customer-list-and-split" entity-id="a5616597-2bf2-44fa-a6c2-dbfebe6da626">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -194,10 +194,54 @@
                     <property value="16" name="auxiliary;index"/>
                 </properties>
             </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom business event" entity-id="9399c034-b2ef-475f-9128-fa3bc55dad20">
+                <properties>
+                    <property value="Customer Details" name="event-name"/>
+                    <property name="updated"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;1">
+                        <property value="#[xpath('cust:Customer/cust:PersonGivenName').text]" name="value"/>
+                        <property value="FirstName" name="key"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;2">
+                        <property value="#[xpath('cust:Customer/cust:PersonFamilyName').text]" name="value"/>
+                        <property value="LastName" name="key"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;3">
+                        <property value="#[xpath('cust:Customer/cust:CustomerId').text]" name="value"/>
+                        <property value="CustomerId" name="key"/>
+                    </property-collection>
+                </properties>
+                <description></description>
+            </pattern>
             <splitter index="17" type="org.mule.tooling.ui.modules.core.pattern.all" name="All" entity-id="All#1">
-                <pattern type="org.mule.tooling.ui.modules.core.pattern.all" name="All" entity-id="All#2"/>
+                <properties>
+                    <property value="17" name=";INDEX"/>
+                    <property value="17" name=";INDEX"/>
+                    <property value="17" name=";INDEX"/>
+                    <property value="17" name=";INDEX"/>
+                    <property value="17" name=";INDEX"/>
+                    <property value="17" name=";INDEX"/>
+                    <property value="17" name=";INDEX"/>
+                    <property value="17" name=";INDEX"/>
+                    <property value="17" name=";INDEX"/>
+                    <property value="17" name=";INDEX"/>
+                </properties>
+                <pattern type="org.mule.tooling.ui.modules.core.pattern.all" name="All" entity-id="All#2">
+                    <properties>
+                        <property value="17" name=";INDEX"/>
+                        <property value="17" name=";INDEX"/>
+                        <property value="17" name=";INDEX"/>
+                        <property value="17" name=";INDEX"/>
+                        <property value="17" name=";INDEX"/>
+                        <property value="17" name=";INDEX"/>
+                        <property value="17" name=";INDEX"/>
+                        <property value="17" name=";INDEX"/>
+                        <property value="17" name=";INDEX"/>
+                        <property value="17" name=";INDEX"/>
+                    </properties>
+                </pattern>
                 <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="18" hadOnlyOneElement="false" entity-id="dd5b44a5-3f30-4b47-9c6f-a6ee1c085de1">
+                    <lane isChoiceOtherwiseLane="false" index="18" hadOnlyOneElement="false" entity-id="25df6654-48d7-4246-bc8c-0828cb9e0706">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/vm/endpoint" name="publish.sfdc.contact" entity-id="VM#1">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
@@ -227,7 +271,7 @@
                             </properties>
                         </endpoint>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="20" hadOnlyOneElement="false" entity-id="15540bfd-6c38-4044-a919-85012c83debb">
+                    <lane isChoiceOtherwiseLane="false" index="20" hadOnlyOneElement="false" entity-id="cef8f512-7e92-410d-88bc-1432b79072ee">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/vm/endpoint" name="publish.customer.jdbc" entity-id="VM#2">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
@@ -261,7 +305,7 @@
             </splitter>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Publish_SFDC_Contact" entity-id="c53f2127-1597-40d1-b11a-9c1064f27301">
+    <flow SubFlow="false" name="Publish_SFDC_Contact" entity-id="dff0088c-0d8a-49b8-9220-5ad4e31d4be2">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -378,7 +422,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Publish2OnPremiseDB" entity-id="793a4526-1d78-4d57-9ef9-823761b4f9ab">
+    <flow SubFlow="false" name="Publish2OnPremiseDB" entity-id="6855d38b-da8c-4ca6-9388-0cb612b47da5">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -498,6 +542,7 @@
     <property value="35" name="auxiliary;wrapIn"/>
     <property value="35" name="auxiliary;index"/>
     <property value="find" name="key"/>
+    <property value="true" name="isProcessed$$$$"/>
 </property-collection>
                             </properties>
                         </endpoint>
@@ -506,20 +551,53 @@
             </scope>
             <splitter index="37" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#1">
                 <properties>
-                    <property-collection name="736a024e-2c2c-460c-a361-e0e422c4807d">
+                    <property value="37" name=";INDEX"/>
+                    <property value="37" name=";INDEX"/>
+                    <property value="37" name=";INDEX"/>
+                    <property value="37" name=";INDEX"/>
+                    <property value="37" name=";INDEX"/>
+                    <property value="37" name=";INDEX"/>
+                    <property value="37" name=";INDEX"/>
+                    <property value="37" name=";INDEX"/>
+                    <property value="37" name=";INDEX"/>
+                    <property value="37" name=";INDEX"/>
+                    <property-collection name="677400b4-5694-4668-83bc-dc885d2d6a35">
                         <property value="#[dbresult.size() &gt; 0]" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[dbresult.size() &gt; 0]" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="dff073ed-e001-4028-9e66-4e06f1299f8f">
+                    <property-collection name="36a7f598-6415-474b-aa79-3ff73b133c64">
                         <property value="true" name="choice.otherwise"/>
                         <property-collection name="choice.attributes"/>
                     </property-collection>
                 </properties>
-                <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2"/>
+                <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2">
+                    <properties>
+                        <property value="37" name=";INDEX"/>
+                        <property value="37" name=";INDEX"/>
+                        <property value="37" name=";INDEX"/>
+                        <property value="37" name=";INDEX"/>
+                        <property value="37" name=";INDEX"/>
+                        <property value="37" name=";INDEX"/>
+                        <property value="37" name=";INDEX"/>
+                        <property value="37" name=";INDEX"/>
+                        <property value="37" name=";INDEX"/>
+                        <property value="37" name=";INDEX"/>
+                        <property-collection name="677400b4-5694-4668-83bc-dc885d2d6a35">
+                            <property value="#[dbresult.size() &gt; 0]" name="choice.expression"/>
+                            <property-collection name="choice.attributes">
+<property value="#[dbresult.size() &gt; 0]" name="expression"/>
+                            </property-collection>
+                        </property-collection>
+                        <property-collection name="36a7f598-6415-474b-aa79-3ff73b133c64">
+                            <property value="true" name="choice.otherwise"/>
+                            <property-collection name="choice.attributes"/>
+                        </property-collection>
+                    </properties>
+                </pattern>
                 <compartment entity-id="compartment#3">
-                    <lane isChoiceOtherwiseLane="false" index="39" hadOnlyOneElement="false" entity-id="736a024e-2c2c-460c-a361-e0e422c4807d">
+                    <lane isChoiceOtherwiseLane="false" index="39" hadOnlyOneElement="false" entity-id="677400b4-5694-4668-83bc-dc885d2d6a35">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/ee/jdbc/endpoint" name="Update Customer" entity-id="Database#3">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
@@ -558,11 +636,12 @@
     <property value="41" name="auxiliary;wrapIn"/>
     <property value="41" name="auxiliary;index"/>
     <property value="update" name="key"/>
+    <property value="true" name="isProcessed$$$$"/>
 </property-collection>
                             </properties>
                         </endpoint>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="43" hadOnlyOneElement="false" entity-id="dff073ed-e001-4028-9e66-4e06f1299f8f">
+                    <lane isChoiceOtherwiseLane="true" index="43" hadOnlyOneElement="false" entity-id="36a7f598-6415-474b-aa79-3ff73b133c64">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/ee/jdbc/endpoint" name="Create Customer" entity-id="Database#4">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
@@ -601,6 +680,7 @@
     <property value="45" name="auxiliary;wrapIn"/>
     <property value="45" name="auxiliary;index"/>
     <property value="insert" name="key"/>
+    <property value="true" name="isProcessed$$$$"/>
 </property-collection>
                             </properties>
                         </endpoint>

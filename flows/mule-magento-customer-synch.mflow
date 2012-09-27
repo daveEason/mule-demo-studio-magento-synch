@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="mule-magento-customer-synch">
-    <global-element type="http://www.springframework.org/schema/context/property-placeholder" name="Property Placeholder" entity-id="Property Placeholder#1">
-        <properties>
-            <property value="mule.dev.properties" name="location"/>
-            <property value="1" name="auxiliary;index"/>
-            <property value="1" name="auxiliary;index"/>
-            <property value="1" name="auxiliary;index"/>
-        </properties>
-    </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/magento/config" name="Magento" entity-id="Magento#1">
         <properties>
             <property value="Magento_config" name="name"/>
-            <property value="2" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
             <property value="admin" name="username"/>
             <property value="P@ssw0rd" name="password"/>
             <property value="http://magento.enterprise.com/~davideason/mag_ee/index.php/api/v2_soap" name="address"/>
-            <property value="2" name="auxiliary;index"/>
-            <property value="2" name="auxiliary;index"/>
-            <property value="2" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="1" name="auxiliary;index"/>
         </properties>
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="DataMapper" entity-id="DataMapper#1">
         <properties>
             <property value="Transform_2_Canonical" name="name"/>
             <property value="transform_2_canonical.grf" name="transformationGraphPath"/>
-            <property value="3" name="auxiliary;index"/>
-            <property value="3" name="auxiliary;index"/>
-            <property value="3" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
+            <property value="2" name="auxiliary;index"/>
         </properties>
     </global-element>
-    <global-unknown index="4" description="false" entity-id="global-unknown#1">
+    <global-unknown index="3" description="false" entity-id="global-unknown#1">
         <content>&lt;mulexml:namespace-manager xmlns:mulexml=&quot;http://www.mulesoft.org/schema/mule/xml&quot;&gt;
         &lt;mulexml:namespace prefix=&quot;cust&quot; uri=&quot;http://www.example.org/customerExample&quot;/&gt; 
     &lt;/mulexml:namespace-manager&gt;</content>
@@ -38,15 +30,15 @@
         <properties>
             <property value="Transform_2_SFDC" name="name"/>
             <property value="transform_2_sfdc.grf" name="transformationGraphPath"/>
-            <property value="6" name="auxiliary;index"/>
-            <property value="6" name="auxiliary;index"/>
-            <property value="6" name="auxiliary;index"/>
+            <property value="5" name="auxiliary;index"/>
+            <property value="5" name="auxiliary;index"/>
+            <property value="5" name="auxiliary;index"/>
         </properties>
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/sfdc/config" name="Salesforce" entity-id="Salesforce#1">
         <properties>
             <property value="Salesforce" name="name"/>
-            <property value="7" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
             <property value="${sf.user}" name="username"/>
             <property value="${sf.password}" name="password"/>
             <property value="${sf.token}" name="securityToken"/>
@@ -55,33 +47,33 @@
             <property name="proxyPort"/>
             <property name="proxyUsername"/>
             <property name="proxyPassword"/>
-            <property value="7" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
             <property name="timeObjectStore-ref"/>
             <property name="clientId"/>
-            <property value="7" name="auxiliary;index"/>
-            <property value="7" name="auxiliary;index"/>
-            <property value="7" name="auxiliary;index"/>
-            <property value="7" name="auxiliary;index"/>
-            <property value="7" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
         </properties>
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/ee/jdbc/mysql-data-source" name="MySQL Data Source" entity-id="MySQL Data Source#1">
         <properties>
             <property value="MySQL_Data_Source" name="name"/>
-            <property value="8" name="auxiliary;index"/>
+            <property value="7" name="auxiliary;index"/>
             <property value="${db.user}" name="user"/>
             <property value="${db.password}" name="password"/>
             <property value="jdbc:mysql://localhost:${jdbc.port}/somecompany" name="url"/>
-            <property value="8" name="auxiliary;index"/>
-            <property value="8" name="auxiliary;index"/>
+            <property value="7" name="auxiliary;index"/>
+            <property value="7" name="auxiliary;index"/>
             <property value="UNSPECIFIED" name="transactionIsolation"/>
             <property name="loginTimeout"/>
             <property name="host"/>
             <property name="port"/>
             <property name="database"/>
-            <property value="8" name="auxiliary;index"/>
-            <property value="8" name="auxiliary;index"/>
-            <property value="8" name="auxiliary;index"/>
+            <property value="7" name="auxiliary;index"/>
+            <property value="7" name="auxiliary;index"/>
+            <property value="7" name="auxiliary;index"/>
         </properties>
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/ee/jdbc/connector" name="Database" entity-id="Database#1">
@@ -89,92 +81,92 @@
             <property value="Database__JDBC_MySQL" name="name"/>
             <property value="MySQL_Data_Source" name="dataSource-ref to JDBC DataSource"/>
             <property value="MySQL_Data_Source" name="dataSource-ref to Bean"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
             <property name="dispatcherPoolFactory-ref"/>
             <property name="queryRunner-ref"/>
             <property name="resultSetHandler-ref"/>
-            <property value="9" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
             <property name="dynamicNotification"/>
             <property value="true" name="validateConnections"/>
             <property name="transactionPerMessage"/>
-            <property value="9" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
             <property value="-1" name="queryTimeout"/>
             <property value="0" name="pollingFrequency"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
-            <property value="9" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
+            <property value="8" name="auxiliary;index"/>
         </properties>
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="DataMapper" entity-id="DataMapper#3">
         <properties>
             <property value="Transform_2_SFDC_Contact" name="name"/>
             <property value="transform_2_sfdc_contact.grf" name="transformationGraphPath"/>
-            <property value="10" name="auxiliary;index"/>
-            <property value="10" name="auxiliary;index"/>
-            <property value="10" name="auxiliary;index"/>
+            <property value="9" name="auxiliary;index"/>
+            <property value="9" name="auxiliary;index"/>
+            <property value="9" name="auxiliary;index"/>
         </properties>
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/ee/data-mapper/config" name="DataMapper" entity-id="DataMapper#4">
         <properties>
             <property value="Transform_2_Contact_SFDC" name="name"/>
             <property value="transform_2_contact_sfdc.grf" name="transformationGraphPath"/>
-            <property value="11" name="auxiliary;index"/>
-            <property value="11" name="auxiliary;index"/>
-            <property value="11" name="auxiliary;index"/>
+            <property value="10" name="auxiliary;index"/>
+            <property value="10" name="auxiliary;index"/>
+            <property value="10" name="auxiliary;index"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="retrieve-magento-customer-list-and-split" entity-id="a5616597-2bf2-44fa-a6c2-dbfebe6da626">
+    <flow SubFlow="false" name="retrieve-magento-customer-list-and-split" entity-id="84b47f0a-c20b-49bd-ac61-75ac7416f721">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="12" name="auxiliary;index"/>
+            <property value="11" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="12" name="auxiliary;index"/>
-            <property value="12" name="auxiliary;index"/>
-            <property value="12" name="auxiliary;index"/>
+            <property value="11" name="auxiliary;index"/>
+            <property value="11" name="auxiliary;index"/>
+            <property value="11" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
-            <multi-source index="13" type="org.mule.tooling.ui.modules.core.endpoint.Poller" name="Poll" entity-id="Poll#1">
+            <multi-source index="12" type="org.mule.tooling.ui.modules.core.endpoint.Poller" name="Poll" entity-id="Poll#1">
                 <properties>
                     <property value="10000" name="frequency"/>
-                    <property value="13" name=";INDEX"/>
+                    <property value="12" name=";INDEX"/>
                 </properties>
                 <pattern type="http://www.mulesoft.org/schema/mule/magento/magento-connector" name="Magento" entity-id="Magento#2">
                     <properties>
                         <property value="Magento_config" name="config-ref"/>
                         <property value="http://www.mulesoft.org/schema/mule/magento/list-customers" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                         <property value="Magento_config" name="config-ref"/>
-                        <property value="14" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;index"/>
                         <property name="filter"/>
-                        <property value="14" name="auxiliary;index"/>
-                        <property value="14" name="auxiliary;index"/>
-                        <property value="14" name="auxiliary;index"/>
-                        <property value="14" name="auxiliary;index"/>
-                        <property value="14" name="auxiliary;index"/>
-                        <property value="14" name="auxiliary;index"/>
-                        <property value="14" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;index"/>
                     </properties>
                 </pattern>
             </multi-source>
             <pattern type="http://www.mulesoft.org/schema/mule/core/collection-splitter" name="Split Customer List" entity-id="Collection Splitter#1">
                 <properties>
                     <property name="enableCorrelation"/>
-                    <property value="15" name="auxiliary;index"/>
-                    <property value="15" name="auxiliary;index"/>
+                    <property value="14" name="auxiliary;index"/>
+                    <property value="14" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="15" name="auxiliary;index"/>
-                    <property value="15" name="auxiliary;index"/>
-                    <property value="15" name="auxiliary;index"/>
+                    <property value="14" name="auxiliary;index"/>
+                    <property value="14" name="auxiliary;index"/>
+                    <property value="14" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" name="Transform_2_Canonical" entity-id="DataMapper#5">
@@ -182,122 +174,119 @@
                     <property value="Transform_2_Canonical" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/ee/data-mapper/transform" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Transform_2_Canonical" name="config-ref"/>
-                    <property value="16" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
                     <property name="input-ref"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
+                    <property value="15" name="auxiliary;index"/>
                 </properties>
             </pattern>
-            <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom business event" entity-id="9399c034-b2ef-475f-9128-fa3bc55dad20">
+            <pattern type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" name="Custom business event" entity-id="Custom business event#1">
                 <properties>
                     <property value="Customer Details" name="event-name"/>
+                    <property value="16" name="auxiliary;index"/>
                     <property name="updated"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;0">
+                        <property value="#[xpath('cust:Customer/cust:Email').text]" name="value"/>
+                        <property value="17" name="auxiliary;wrapIn"/>
+                        <property value="17" name="auxiliary;index"/>
+                        <property value="Email" name="key"/>
+                    </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;1">
-                        <property value="#[xpath('cust:Customer/cust:PersonGivenName').text]" name="value"/>
-                        <property value="FirstName" name="key"/>
+                        <property value="#[xpath('cust:Customer/cust:CustomerId').text]" name="value"/>
+                        <property value="18" name="auxiliary;wrapIn"/>
+                        <property value="18" name="auxiliary;index"/>
+                        <property value="CustomerId" name="key"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;2">
                         <property value="#[xpath('cust:Customer/cust:PersonFamilyName').text]" name="value"/>
+                        <property value="19" name="auxiliary;wrapIn"/>
+                        <property value="19" name="auxiliary;index"/>
                         <property value="LastName" name="key"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;3">
-                        <property value="#[xpath('cust:Customer/cust:CustomerId').text]" name="value"/>
-                        <property value="CustomerId" name="key"/>
+                        <property value="#[xpath('cust:Customer/cust:PersonGivenName').text]" name="value"/>
+                        <property value="20" name="auxiliary;wrapIn"/>
+                        <property value="20" name="auxiliary;index"/>
+                        <property value="FirstName" name="key"/>
                     </property-collection>
                 </properties>
                 <description></description>
             </pattern>
-            <splitter index="17" type="org.mule.tooling.ui.modules.core.pattern.all" name="All" entity-id="All#1">
+            <splitter index="21" type="org.mule.tooling.ui.modules.core.pattern.all" name="All" entity-id="All#1">
                 <properties>
-                    <property value="17" name=";INDEX"/>
-                    <property value="17" name=";INDEX"/>
-                    <property value="17" name=";INDEX"/>
-                    <property value="17" name=";INDEX"/>
-                    <property value="17" name=";INDEX"/>
-                    <property value="17" name=";INDEX"/>
-                    <property value="17" name=";INDEX"/>
-                    <property value="17" name=";INDEX"/>
-                    <property value="17" name=";INDEX"/>
-                    <property value="17" name=";INDEX"/>
+                    <property value="21" name=";INDEX"/>
+                    <property value="21" name=";INDEX"/>
                 </properties>
                 <pattern type="org.mule.tooling.ui.modules.core.pattern.all" name="All" entity-id="All#2">
                     <properties>
-                        <property value="17" name=";INDEX"/>
-                        <property value="17" name=";INDEX"/>
-                        <property value="17" name=";INDEX"/>
-                        <property value="17" name=";INDEX"/>
-                        <property value="17" name=";INDEX"/>
-                        <property value="17" name=";INDEX"/>
-                        <property value="17" name=";INDEX"/>
-                        <property value="17" name=";INDEX"/>
-                        <property value="17" name=";INDEX"/>
-                        <property value="17" name=";INDEX"/>
+                        <property value="21" name=";INDEX"/>
+                        <property value="21" name=";INDEX"/>
                     </properties>
                 </pattern>
                 <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="18" hadOnlyOneElement="false" entity-id="25df6654-48d7-4246-bc8c-0828cb9e0706">
+                    <lane isChoiceOtherwiseLane="false" index="22" hadOnlyOneElement="false" entity-id="f977a50c-8bc8-4630-836b-0dc3ee2f53f0">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/vm/endpoint" name="publish.sfdc.contact" entity-id="VM#1">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
 <property value="one-way" name="exchange-pattern"/>
-<property value="19" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
 <property value="publish.sfdc.contact" name="path"/>
-<property value="19" name="auxiliary;index"/>
-<property value="19" name="auxiliary;index"/>
-<property value="19" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
 <property name="businessEventsLabel"/>
 <property name="tracking:enable-default-events"/>
-<property value="19" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
 <property name="address"/>
 <property name="responseTimeout"/>
 <property name="encoding"/>
 <property name="disableTransportTransformer"/>
 <property name="mimeType"/>
-<property value="19" name="auxiliary;index"/>
-<property value="19" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
 <property name="connector-ref"/>
 <property name="ref"/>
 <property name="transformer-refs"/>
 <property name="responseTransformer-refs"/>
-<property value="19" name="auxiliary;index"/>
-<property value="19" name="auxiliary;index"/>
-<property value="19" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
+<property value="23" name="auxiliary;index"/>
                             </properties>
                         </endpoint>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="20" hadOnlyOneElement="false" entity-id="cef8f512-7e92-410d-88bc-1432b79072ee">
+                    <lane isChoiceOtherwiseLane="false" index="24" hadOnlyOneElement="false" entity-id="83df3137-2c34-4c2a-9e9f-d4b79ac14220">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/vm/endpoint" name="publish.customer.jdbc" entity-id="VM#2">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
 <property value="one-way" name="exchange-pattern"/>
-<property value="21" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
 <property value="publish.customer.jdbc" name="path"/>
-<property value="21" name="auxiliary;index"/>
-<property value="21" name="auxiliary;index"/>
-<property value="21" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
 <property name="businessEventsLabel"/>
 <property name="tracking:enable-default-events"/>
-<property value="21" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
 <property name="address"/>
 <property name="responseTimeout"/>
 <property name="encoding"/>
 <property name="disableTransportTransformer"/>
 <property name="mimeType"/>
-<property value="21" name="auxiliary;index"/>
-<property value="21" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
 <property name="connector-ref"/>
 <property name="ref"/>
 <property name="transformer-refs"/>
 <property name="responseTransformer-refs"/>
-<property value="21" name="auxiliary;index"/>
-<property value="21" name="auxiliary;index"/>
-<property value="21" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
+<property value="25" name="auxiliary;index"/>
                             </properties>
                         </endpoint>
                     </lane>
@@ -305,44 +294,44 @@
             </splitter>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Publish_SFDC_Contact" entity-id="dff0088c-0d8a-49b8-9220-5ad4e31d4be2">
+    <flow SubFlow="false" name="Publish_SFDC_Contact" entity-id="e9b35477-08dc-4d32-b966-dc6d5224908d">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="22" name="auxiliary;index"/>
+            <property value="26" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="22" name="auxiliary;index"/>
-            <property value="22" name="auxiliary;index"/>
-            <property value="22" name="auxiliary;index"/>
+            <property value="26" name="auxiliary;index"/>
+            <property value="26" name="auxiliary;index"/>
+            <property value="26" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#2">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/vm/endpoint" name="publish.sfdc.contact" entity-id="VM#3">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="23" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
                     <property value="publish.sfdc.contact" name="path"/>
-                    <property value="23" name="auxiliary;index"/>
-                    <property value="23" name="auxiliary;index"/>
-                    <property value="23" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="23" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="responseTimeout"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
-                    <property value="23" name="auxiliary;index"/>
-                    <property value="23" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="23" name="auxiliary;index"/>
-                    <property value="23" name="auxiliary;index"/>
-                    <property value="23" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
+                    <property value="27" name="auxiliary;index"/>
                 </properties>
             </endpoint>
             <pattern type="http://www.mulesoft.org/schema/mule/core/variable-transformer" name="Store CustomerId" entity-id="Variable#1">
@@ -350,13 +339,13 @@
                     <property value="http://www.mulesoft.org/schema/mule/core/set-variable" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="customer_id" name="variableName"/>
                     <property value="#[xpath('cust:Customer/cust:CustomerId').text]" name="value"/>
-                    <property value="24" name="auxiliary;index"/>
-                    <property value="24" name="auxiliary;index"/>
-                    <property value="24" name="auxiliary;index"/>
-                    <property value="24" name="auxiliary;index"/>
-                    <property value="24" name="auxiliary;index"/>
-                    <property value="24" name="auxiliary;index"/>
-                    <property value="24" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
+                    <property value="28" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Log customer Id" entity-id="Logger#1">
@@ -364,9 +353,9 @@
                     <property value="Customer Id = #[customer_id] and payload = #[payload]" name="message"/>
                     <property value="INFO" name="level"/>
                     <property name="category"/>
-                    <property value="25" name="auxiliary;index"/>
-                    <property value="25" name="auxiliary;index"/>
-                    <property value="25" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
+                    <property value="29" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" name="Transform_2_Contact_SFDC" entity-id="DataMapper#6">
@@ -374,16 +363,16 @@
                     <property value="Transform_2_Contact_SFDC" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/ee/data-mapper/transform" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Transform_2_Contact_SFDC" name="config-ref"/>
-                    <property value="26" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
                     <property name="input-ref"/>
-                    <property value="26" name="auxiliary;index"/>
-                    <property value="26" name="auxiliary;index"/>
-                    <property value="26" name="auxiliary;index"/>
-                    <property value="26" name="auxiliary;index"/>
-                    <property value="26" name="auxiliary;index"/>
-                    <property value="26" name="auxiliary;index"/>
-                    <property value="26" name="auxiliary;index"/>
-                    <property value="26" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
+                    <property value="30" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" name="Upsert Contact" entity-id="Salesforce#2">
@@ -391,12 +380,12 @@
                     <property value="Salesforce" name="config-ref"/>
                     <property value="http://www.mulesoft.org/schema/mule/sfdc/upsert" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="Salesforce" name="config-ref"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
                     <property value="magento_customer_id__c" name="externalIdFieldName"/>
                     <property value="Contact" name="type"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
                     <property name=""/>
                     <property name="username"/>
                     <property name="password"/>
@@ -406,60 +395,60 @@
                     <property name="proxyPort"/>
                     <property name="proxyUsername"/>
                     <property name="proxyPassword"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
-                    <property value="27" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
+                    <property value="31" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/upsert-objectss;0">
                         <property value="#[payload]" name="ref"/>
-                        <property value="28" name="auxiliary;wrapIn"/>
-                        <property value="28" name="auxiliary;index"/>
+                        <property value="32" name="auxiliary;wrapIn"/>
+                        <property value="32" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Publish2OnPremiseDB" entity-id="6855d38b-da8c-4ca6-9388-0cb612b47da5">
+    <flow SubFlow="false" name="Publish2OnPremiseDB" entity-id="e9f73d03-5ee9-4b96-8162-a68a33d8fd70">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
-            <property value="29" name="auxiliary;index"/>
+            <property value="33" name="auxiliary;index"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property value="29" name="auxiliary;index"/>
-            <property value="29" name="auxiliary;index"/>
-            <property value="29" name="auxiliary;index"/>
+            <property value="33" name="auxiliary;index"/>
+            <property value="33" name="auxiliary;index"/>
+            <property value="33" name="auxiliary;index"/>
         </properties>
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#3">
             <endpoint message-exchange-pattern="OneWay" direction="Inbound" type="http://www.mulesoft.org/schema/mule/vm/endpoint" name="publish.customer.jdbc" entity-id="VM#4">
                 <properties>
                     <property value="one-way" name="exchange-pattern"/>
                     <property value="one-way" name="exchange-pattern"/>
-                    <property value="30" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
                     <property value="publish.customer.jdbc" name="path"/>
-                    <property value="30" name="auxiliary;index"/>
-                    <property value="30" name="auxiliary;index"/>
-                    <property value="30" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
                     <property name="businessEventsLabel"/>
                     <property name="tracking:enable-default-events"/>
-                    <property value="30" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
                     <property name="address"/>
                     <property name="responseTimeout"/>
                     <property name="encoding"/>
                     <property name="disableTransportTransformer"/>
                     <property name="mimeType"/>
-                    <property value="30" name="auxiliary;index"/>
-                    <property value="30" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
                     <property name="connector-ref"/>
                     <property name="ref"/>
                     <property name="transformer-refs"/>
                     <property name="responseTransformer-refs"/>
-                    <property value="30" name="auxiliary;index"/>
-                    <property value="30" name="auxiliary;index"/>
-                    <property value="30" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
+                    <property value="34" name="auxiliary;index"/>
                 </properties>
             </endpoint>
             <pattern type="http://www.mulesoft.org/schema/mule/core/object-to-string-transformer" name="Object to String" entity-id="Object to String#1">
@@ -467,11 +456,11 @@
                     <property name="returnClass"/>
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
-                    <property value="31" name="auxiliary;index"/>
+                    <property value="35" name="auxiliary;index"/>
                     <property name="mimeType"/>
-                    <property value="31" name="auxiliary;index"/>
-                    <property value="31" name="auxiliary;index"/>
-                    <property value="31" name="auxiliary;index"/>
+                    <property value="35" name="auxiliary;index"/>
+                    <property value="35" name="auxiliary;index"/>
+                    <property value="35" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <pattern type="http://www.mulesoft.org/schema/mule/core/variable-transformer" name="Store CustomerId" entity-id="Variable#2">
@@ -479,27 +468,27 @@
                     <property value="http://www.mulesoft.org/schema/mule/core/set-variable" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
                     <property value="customer_id" name="variableName"/>
                     <property value="#[xpath('cust:Customer/cust:CustomerId').text]" name="value"/>
-                    <property value="32" name="auxiliary;index"/>
-                    <property value="32" name="auxiliary;index"/>
-                    <property value="32" name="auxiliary;index"/>
-                    <property value="32" name="auxiliary;index"/>
-                    <property value="32" name="auxiliary;index"/>
-                    <property value="32" name="auxiliary;index"/>
-                    <property value="32" name="auxiliary;index"/>
+                    <property value="36" name="auxiliary;index"/>
+                    <property value="36" name="auxiliary;index"/>
+                    <property value="36" name="auxiliary;index"/>
+                    <property value="36" name="auxiliary;index"/>
+                    <property value="36" name="auxiliary;index"/>
+                    <property value="36" name="auxiliary;index"/>
+                    <property value="36" name="auxiliary;index"/>
                 </properties>
             </pattern>
             <scope type="org.mule.tooling.ui.modules.core.scope.enricher" name="Query Customer Id" entity-id="Message Enricher#1">
                 <properties>
                     <property name="source"/>
                     <property name="target"/>
-                    <property value="33" name="auxiliary;index"/>
-                    <property value="33" name="auxiliary;index"/>
-                    <property value="33" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
+                    <property value="37" name="auxiliary;index"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;0">
                         <property value="#[payload]" name="source"/>
                         <property value="#[variable:dbresult]" name="target"/>
-                        <property value="36" name="auxiliary;wrapIn"/>
-                        <property value="36" name="auxiliary;index"/>
+                        <property value="40" name="auxiliary;wrapIn"/>
+                        <property value="40" name="auxiliary;index"/>
                     </property-collection>
                 </properties>
                 <compartment entity-id="compartment#2">
@@ -508,39 +497,39 @@
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
 <property value="request-response" name="exchange-pattern"/>
-<property value="34" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
 <property name=""/>
 <property value="find" name="queryKey"/>
-<property value="34" name="auxiliary;index"/>
-<property value="34" name="auxiliary;index"/>
-<property value="34" name="auxiliary;index"/>
-<property value="34" name="auxiliary;index"/>
-<property value="34" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
 <property name="businessEventsLabel"/>
 <property name="tracking:enable-default-events"/>
-<property value="34" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
 <property name="address"/>
 <property name="responseTimeout"/>
 <property name="encoding"/>
 <property name="disableTransportTransformer"/>
 <property name="mimeType"/>
-<property value="34" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
 <property value="-1" name="queryTimeout"/>
 <property name="pollingFrequency"/>
-<property value="34" name="auxiliary;index"/>
-<property value="34" name="auxiliary;index"/>
-<property value="34" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
 <property value="Database__JDBC_MySQL" name="connector-ref"/>
 <property name="ref"/>
 <property name="transformer-refs"/>
 <property name="responseTransformer-refs"/>
-<property value="34" name="auxiliary;index"/>
-<property value="34" name="auxiliary;index"/>
-<property value="34" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
+<property value="38" name="auxiliary;index"/>
 <property-collection name="@http://www.mulesoft.org/schema/mule/ee/jdbc/query;0">
     <property value="select * from customer where customerid=#[customer_id]" name="value"/>
-    <property value="35" name="auxiliary;wrapIn"/>
-    <property value="35" name="auxiliary;index"/>
+    <property value="39" name="auxiliary;wrapIn"/>
+    <property value="39" name="auxiliary;index"/>
     <property value="find" name="key"/>
     <property value="true" name="isProcessed$$$$"/>
 </property-collection>
@@ -549,136 +538,120 @@
                     </lane>
                 </compartment>
             </scope>
-            <splitter index="37" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#1">
+            <splitter index="41" type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#1">
                 <properties>
-                    <property value="37" name=";INDEX"/>
-                    <property value="37" name=";INDEX"/>
-                    <property value="37" name=";INDEX"/>
-                    <property value="37" name=";INDEX"/>
-                    <property value="37" name=";INDEX"/>
-                    <property value="37" name=";INDEX"/>
-                    <property value="37" name=";INDEX"/>
-                    <property value="37" name=";INDEX"/>
-                    <property value="37" name=";INDEX"/>
-                    <property value="37" name=";INDEX"/>
-                    <property-collection name="677400b4-5694-4668-83bc-dc885d2d6a35">
+                    <property value="41" name=";INDEX"/>
+                    <property value="41" name=";INDEX"/>
+                    <property-collection name="3c74813a-b6bb-42dc-bf25-e680c8ebc72c">
+                        <property value="true" name="choice.otherwise"/>
+                        <property-collection name="choice.attributes"/>
+                    </property-collection>
+                    <property-collection name="58e5e78c-580f-4ebb-b9c2-a4b7b6365c83">
                         <property value="#[dbresult.size() &gt; 0]" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[dbresult.size() &gt; 0]" name="expression"/>
                         </property-collection>
                     </property-collection>
-                    <property-collection name="36a7f598-6415-474b-aa79-3ff73b133c64">
-                        <property value="true" name="choice.otherwise"/>
-                        <property-collection name="choice.attributes"/>
-                    </property-collection>
                 </properties>
                 <pattern type="org.mule.tooling.ui.modules.core.pattern.cbr" name="Choice" entity-id="Choice#2">
                     <properties>
-                        <property value="37" name=";INDEX"/>
-                        <property value="37" name=";INDEX"/>
-                        <property value="37" name=";INDEX"/>
-                        <property value="37" name=";INDEX"/>
-                        <property value="37" name=";INDEX"/>
-                        <property value="37" name=";INDEX"/>
-                        <property value="37" name=";INDEX"/>
-                        <property value="37" name=";INDEX"/>
-                        <property value="37" name=";INDEX"/>
-                        <property value="37" name=";INDEX"/>
-                        <property-collection name="677400b4-5694-4668-83bc-dc885d2d6a35">
+                        <property value="41" name=";INDEX"/>
+                        <property value="41" name=";INDEX"/>
+                        <property-collection name="3c74813a-b6bb-42dc-bf25-e680c8ebc72c">
+                            <property value="true" name="choice.otherwise"/>
+                            <property-collection name="choice.attributes"/>
+                        </property-collection>
+                        <property-collection name="58e5e78c-580f-4ebb-b9c2-a4b7b6365c83">
                             <property value="#[dbresult.size() &gt; 0]" name="choice.expression"/>
                             <property-collection name="choice.attributes">
 <property value="#[dbresult.size() &gt; 0]" name="expression"/>
                             </property-collection>
                         </property-collection>
-                        <property-collection name="36a7f598-6415-474b-aa79-3ff73b133c64">
-                            <property value="true" name="choice.otherwise"/>
-                            <property-collection name="choice.attributes"/>
-                        </property-collection>
                     </properties>
                 </pattern>
                 <compartment entity-id="compartment#3">
-                    <lane isChoiceOtherwiseLane="false" index="39" hadOnlyOneElement="false" entity-id="677400b4-5694-4668-83bc-dc885d2d6a35">
+                    <lane isChoiceOtherwiseLane="false" index="43" hadOnlyOneElement="false" entity-id="58e5e78c-580f-4ebb-b9c2-a4b7b6365c83">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/ee/jdbc/endpoint" name="Update Customer" entity-id="Database#3">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
 <property value="request-response" name="exchange-pattern"/>
-<property value="40" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
 <property name=""/>
 <property value="update" name="queryKey"/>
-<property value="40" name="auxiliary;index"/>
-<property value="40" name="auxiliary;index"/>
-<property value="40" name="auxiliary;index"/>
-<property value="40" name="auxiliary;index"/>
-<property value="40" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
 <property name="businessEventsLabel"/>
 <property name="tracking:enable-default-events"/>
-<property value="40" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
 <property name="address"/>
 <property name="responseTimeout"/>
 <property name="encoding"/>
 <property name="disableTransportTransformer"/>
 <property name="mimeType"/>
-<property value="40" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
 <property value="-1" name="queryTimeout"/>
 <property name="pollingFrequency"/>
-<property value="40" name="auxiliary;index"/>
-<property value="40" name="auxiliary;index"/>
-<property value="40" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
 <property value="Database__JDBC_MySQL" name="connector-ref"/>
 <property name="ref"/>
 <property name="transformer-refs"/>
 <property name="responseTransformer-refs"/>
-<property value="40" name="auxiliary;index"/>
-<property value="40" name="auxiliary;index"/>
-<property value="40" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
+<property value="44" name="auxiliary;index"/>
 <property-collection name="@http://www.mulesoft.org/schema/mule/ee/jdbc/query;0">
     <property value="update customer set firstname=#[xpath('cust:Customer/cust:PersonGivenName').text], lastname=#[xpath('cust:Customer/cust:PersonFamilyName').text], email=#[xpath('cust:Customer/cust:Email').text] where customerid=#[xpath('cust:Customer/cust:CustomerId').text]" name="value"/>
-    <property value="41" name="auxiliary;wrapIn"/>
-    <property value="41" name="auxiliary;index"/>
+    <property value="45" name="auxiliary;wrapIn"/>
+    <property value="45" name="auxiliary;index"/>
     <property value="update" name="key"/>
     <property value="true" name="isProcessed$$$$"/>
 </property-collection>
                             </properties>
                         </endpoint>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="43" hadOnlyOneElement="false" entity-id="36a7f598-6415-474b-aa79-3ff73b133c64">
+                    <lane isChoiceOtherwiseLane="true" index="47" hadOnlyOneElement="false" entity-id="3c74813a-b6bb-42dc-bf25-e680c8ebc72c">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/ee/jdbc/endpoint" name="Create Customer" entity-id="Database#4">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
 <property value="request-response" name="exchange-pattern"/>
-<property value="44" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
 <property name=""/>
 <property value="insert" name="queryKey"/>
-<property value="44" name="auxiliary;index"/>
-<property value="44" name="auxiliary;index"/>
-<property value="44" name="auxiliary;index"/>
-<property value="44" name="auxiliary;index"/>
-<property value="44" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
 <property name="businessEventsLabel"/>
 <property name="tracking:enable-default-events"/>
-<property value="44" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
 <property name="address"/>
 <property name="responseTimeout"/>
 <property name="encoding"/>
 <property name="disableTransportTransformer"/>
 <property name="mimeType"/>
-<property value="44" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
 <property value="-1" name="queryTimeout"/>
 <property name="pollingFrequency"/>
-<property value="44" name="auxiliary;index"/>
-<property value="44" name="auxiliary;index"/>
-<property value="44" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
 <property value="Database__JDBC_MySQL" name="connector-ref"/>
 <property name="ref"/>
 <property name="transformer-refs"/>
 <property name="responseTransformer-refs"/>
-<property value="44" name="auxiliary;index"/>
-<property value="44" name="auxiliary;index"/>
-<property value="44" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
+<property value="48" name="auxiliary;index"/>
 <property-collection name="@http://www.mulesoft.org/schema/mule/ee/jdbc/query;0">
     <property value="insert into customer (customerid, firstname, lastname, email) values(#[xpath('cust:Customer/cust:CustomerId').text], #[xpath('cust:Customer/cust:PersonGivenName').text], #[xpath('cust:Customer/cust:PersonFamilyName').text], #[xpath('cust:Customer/cust:Email').text]);" name="value"/>
-    <property value="45" name="auxiliary;wrapIn"/>
-    <property value="45" name="auxiliary;index"/>
+    <property value="49" name="auxiliary;wrapIn"/>
+    <property value="49" name="auxiliary;index"/>
     <property value="insert" name="key"/>
     <property value="true" name="isProcessed$$$$"/>
 </property-collection>
@@ -692,9 +665,9 @@
                     <property name=""/>
                     <property name="when"/>
                     <property name="enableNotifications"/>
-                    <property value="46" name="auxiliary;index"/>
-                    <property value="46" name="auxiliary;index"/>
-                    <property value="46" name="auxiliary;index"/>
+                    <property value="50" name="auxiliary;index"/>
+                    <property value="50" name="auxiliary;index"/>
+                    <property value="50" name="auxiliary;index"/>
                 </properties>
                 <compartment entity-id="compartment#4">
                     <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#5">
@@ -703,9 +676,9 @@
 <property value="Exception Encountered." name="message"/>
 <property value="ERROR" name="level"/>
 <property name="category"/>
-<property value="47" name="auxiliary;index"/>
-<property value="47" name="auxiliary;index"/>
-<property value="47" name="auxiliary;index"/>
+<property value="51" name="auxiliary;index"/>
+<property value="51" name="auxiliary;index"/>
+<property value="51" name="auxiliary;index"/>
                             </properties>
                         </pattern>
                     </lane>

@@ -12,7 +12,6 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd 
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd 
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd ">
-    <context:property-placeholder location="mule.dev.properties"/>
     <magento:config name="Magento_config" username="admin" password="P@ssw0rd" address="http://magento.enterprise.com/~davideason/mag_ee/index.php/api/v2_soap" doc:name="Magento"/>
     <data-mapper:config name="Transform_2_Canonical" transformationGraphPath="transform_2_canonical.grf" doc:name="DataMapper"/>
     <mulexml:namespace-manager>
@@ -31,9 +30,10 @@ http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/fil
         <collection-splitter doc:name="Split Customer List"/>
         <data-mapper:transform config-ref="Transform_2_Canonical" doc:name="Transform_2_Canonical"/>
         <tracking:custom-event event-name="Customer Details" doc:name="Custom business event">
-            <tracking:meta-data key="FirstName" value="#[xpath('cust:Customer/cust:PersonGivenName').text]"/>
-            <tracking:meta-data key="LastName" value="#[xpath('cust:Customer/cust:PersonFamilyName').text]"/>
+            <tracking:meta-data key="Email" value="#[xpath('cust:Customer/cust:Email').text]"/>
             <tracking:meta-data key="CustomerId" value="#[xpath('cust:Customer/cust:CustomerId').text]"/>
+            <tracking:meta-data key="LastName" value="#[xpath('cust:Customer/cust:PersonFamilyName').text]"/>
+            <tracking:meta-data key="FirstName" value="#[xpath('cust:Customer/cust:PersonGivenName').text]"/>
         </tracking:custom-event>
         <all doc:name="All">
             <processor-chain>

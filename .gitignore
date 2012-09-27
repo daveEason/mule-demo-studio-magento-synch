@@ -9,7 +9,7 @@ out/
 bin/
 intellij/
 build/
-mule.dev.properties
+mule-app.properties
 *.log
 *.log.*
 *.iml

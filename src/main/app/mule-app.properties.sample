@@ -1,0 +1,16 @@
+#** GENERATED CONTENT ** Mule Custom Properties file.
+#Mon Sep 17 20:49:32 PDT 2012
+
+#In order to use this properties file remove the '.sample' extension and insert required parameters (mule-app.properties).
+
+#JDBC Port for (SDG)
+jdbc.port=3306
+
+#Database Credentials
+db.user=
+db.password=
+
+#SalesForce Credentials
+sf.token=
+sf.user=
+sf.password=

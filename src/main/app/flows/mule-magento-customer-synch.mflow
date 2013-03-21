@@ -37,48 +37,25 @@
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/sfdc/config" name="Salesforce" entity-id="Salesforce#1">
         <properties>
-            <property value="5" name="maxIdle"/>
-            <property value="" name="proxyUsername"/>
-            <property value="" name="d"/>
-            <property value="" name="poolingProfileLabel"/>
-            <property value="false" name="customReconnection"/>
-            <property value="false" name="standardReconnection"/>
-            <property value="${sfdc.user.token}" name="securityToken"/>
-            <property value="" name="proxyHost"/>
-            <property value="false" name="allowFieldTruncationSupport"/>
-            <property value="" name="assignmentRuleId"/>
-            <property value="80" name="proxyPort"/>
-            <property value="${sfdc.user.pwd}" name="password"/>
-            <property value="" name="url"/>
-            <property value="" name="clientId"/>
-            <property value="true" name="noReconnection"/>
-            <property value="5" name="maxActive"/>
-            <property value="WHEN_EXHAUSTED_GROW" name="exhaustedAction"/>
-            <property value="true" name="blocking"/>
-            <property value="${sfdc.user.name}" name="username"/>
-            <property value="false" name="useDefaultRule"/>
             <property value="Salesforce" name="name"/>
-            <property value="" name="timeObjectStore-ref"/>
-            <property value="" name="proxyPassword"/>
-            <property value="INITIALISE_ONE" name="initialisationPolicy"/>
             <property value="6" name="auxiliary;index"/>
-            <property name="updated"/>
-            <property-collection name="">
-                <property value="" name="d"/>
-                <property value="true" name="blocking"/>
-                <property value="false" name="customReconnection"/>
-                <property value="false" name="standardReconnection"/>
-                <property value="true" name="noReconnection"/>
-            </property-collection>
-            <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/connection-pooling-profile;956823608">
-                <property value="5" name="maxActive"/>
-                <property value="WHEN_EXHAUSTED_GROW" name="exhaustedAction"/>
-                <property value="5" name="maxIdle"/>
-                <property value="" name="poolingProfileLabel"/>
-                <property value="INITIALISE_ONE" name="initialisationPolicy"/>
-            </property-collection>
+            <property value="${sf.user}" name="username"/>
+            <property value="${sf.password}" name="password"/>
+            <property value="${sf.token}" name="securityToken"/>
+            <property name="url"/>
+            <property name="proxyHost"/>
+            <property name="proxyPort"/>
+            <property name="proxyUsername"/>
+            <property name="proxyPassword"/>
+            <property value="6" name="auxiliary;index"/>
+            <property name="timeObjectStore-ref"/>
+            <property name="clientId"/>
+            <property value="6" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
+            <property value="6" name="auxiliary;index"/>
         </properties>
-        <description></description>
     </global-element>
     <global-element type="http://www.mulesoft.org/schema/mule/ee/jdbc/mysql-data-source" name="MySQL Data Source" entity-id="MySQL Data Source#1">
         <properties>
@@ -146,7 +123,7 @@
             <property value="10" name="auxiliary;index"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="retrieve-magento-customer-list-and-split" entity-id="8f129460-3158-4e23-8060-f06ebe36bbf4">
+    <flow SubFlow="false" name="retrieve-magento-customer-list-and-split" entity-id="84b47f0a-c20b-49bd-ac61-75ac7416f721">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -160,7 +137,7 @@
         <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
             <multi-source index="12" type="org.mule.tooling.ui.modules.core.endpoint.Poller" name="Poll" entity-id="Poll#1">
                 <properties>
-                    <property value="30000" name="frequency"/>
+                    <property value="10000" name="frequency"/>
                     <property value="12" name=";INDEX"/>
                 </properties>
                 <pattern type="http://www.mulesoft.org/schema/mule/magento/magento-connector" name="Magento" entity-id="Magento#2">
@@ -213,8 +190,7 @@
                 <properties>
                     <property value="Customer Details" name="event-name"/>
                     <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
-                    <property value="16" name="auxiliary;index"/>
+                    <property name="updated"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;0">
                         <property value="#[xpath('cust:Customer/cust:Email').text]" name="value"/>
                         <property value="17" name="auxiliary;wrapIn"/>
@@ -240,15 +216,10 @@
                         <property value="FirstName" name="key"/>
                     </property-collection>
                 </properties>
+                <description></description>
             </pattern>
             <splitter index="21" type="org.mule.tooling.ui.modules.core.pattern.all" name="All" entity-id="All#1">
                 <properties>
-                    <property value="21" name=";INDEX"/>
-                    <property value="21" name=";INDEX"/>
-                    <property value="21" name=";INDEX"/>
-                    <property value="21" name=";INDEX"/>
-                    <property value="21" name=";INDEX"/>
-                    <property value="21" name=";INDEX"/>
                     <property value="21" name=";INDEX"/>
                     <property value="21" name=";INDEX"/>
                 </properties>
@@ -256,16 +227,10 @@
                     <properties>
                         <property value="21" name=";INDEX"/>
                         <property value="21" name=";INDEX"/>
-                        <property value="21" name=";INDEX"/>
-                        <property value="21" name=";INDEX"/>
-                        <property value="21" name=";INDEX"/>
-                        <property value="21" name=";INDEX"/>
-                        <property value="21" name=";INDEX"/>
-                        <property value="21" name=";INDEX"/>
                     </properties>
                 </pattern>
                 <compartment entity-id="compartment#1">
-                    <lane isChoiceOtherwiseLane="false" index="22" hadOnlyOneElement="false" entity-id="43b92c56-5c44-487c-8460-d31f0da75553">
+                    <lane isChoiceOtherwiseLane="false" index="22" hadOnlyOneElement="false" entity-id="f977a50c-8bc8-4630-836b-0dc3ee2f53f0">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/vm/endpoint" name="publish.sfdc.contact" entity-id="VM#1">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
@@ -295,7 +260,7 @@
                             </properties>
                         </endpoint>
                     </lane>
-                    <lane isChoiceOtherwiseLane="false" index="24" hadOnlyOneElement="false" entity-id="d02714c6-1cd2-45e7-9dda-f97974ec5438">
+                    <lane isChoiceOtherwiseLane="false" index="24" hadOnlyOneElement="false" entity-id="83df3137-2c34-4c2a-9e9f-d4b79ac14220">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/vm/endpoint" name="publish.customer.jdbc" entity-id="VM#2">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
@@ -329,7 +294,7 @@
             </splitter>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Publish_SFDC_Contact" entity-id="32ac5e59-1659-40df-aba1-342444f989d5">
+    <flow SubFlow="false" name="Publish_SFDC_Contact" entity-id="e9b35477-08dc-4d32-b966-dc6d5224908d">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -446,7 +411,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="Publish2OnPremiseDB" entity-id="96405755-b56e-420c-8b2f-0bd1cb985756">
+    <flow SubFlow="false" name="Publish2OnPremiseDB" entity-id="e9f73d03-5ee9-4b96-8162-a68a33d8fd70">
         <properties>
             <property name="processingStrategy2"/>
             <property name="processingStrategy"/>
@@ -577,17 +542,11 @@
                 <properties>
                     <property value="41" name=";INDEX"/>
                     <property value="41" name=";INDEX"/>
-                    <property value="41" name=";INDEX"/>
-                    <property value="41" name=";INDEX"/>
-                    <property value="41" name=";INDEX"/>
-                    <property value="41" name=";INDEX"/>
-                    <property value="41" name=";INDEX"/>
-                    <property value="41" name=";INDEX"/>
-                    <property-collection name="56dad832-674c-44fc-a637-1f9a5d7a73f1">
+                    <property-collection name="3c74813a-b6bb-42dc-bf25-e680c8ebc72c">
                         <property value="true" name="choice.otherwise"/>
                         <property-collection name="choice.attributes"/>
                     </property-collection>
-                    <property-collection name="dc9eb9eb-de04-4101-9c35-896ec403aeff">
+                    <property-collection name="58e5e78c-580f-4ebb-b9c2-a4b7b6365c83">
                         <property value="#[dbresult.size() &gt; 0]" name="choice.expression"/>
                         <property-collection name="choice.attributes">
                             <property value="#[dbresult.size() &gt; 0]" name="expression"/>
@@ -598,17 +557,11 @@
                     <properties>
                         <property value="41" name=";INDEX"/>
                         <property value="41" name=";INDEX"/>
-                        <property value="41" name=";INDEX"/>
-                        <property value="41" name=";INDEX"/>
-                        <property value="41" name=";INDEX"/>
-                        <property value="41" name=";INDEX"/>
-                        <property value="41" name=";INDEX"/>
-                        <property value="41" name=";INDEX"/>
-                        <property-collection name="56dad832-674c-44fc-a637-1f9a5d7a73f1">
+                        <property-collection name="3c74813a-b6bb-42dc-bf25-e680c8ebc72c">
                             <property value="true" name="choice.otherwise"/>
                             <property-collection name="choice.attributes"/>
                         </property-collection>
-                        <property-collection name="dc9eb9eb-de04-4101-9c35-896ec403aeff">
+                        <property-collection name="58e5e78c-580f-4ebb-b9c2-a4b7b6365c83">
                             <property value="#[dbresult.size() &gt; 0]" name="choice.expression"/>
                             <property-collection name="choice.attributes">
 <property value="#[dbresult.size() &gt; 0]" name="expression"/>
@@ -617,7 +570,7 @@
                     </properties>
                 </pattern>
                 <compartment entity-id="compartment#3">
-                    <lane isChoiceOtherwiseLane="false" index="43" hadOnlyOneElement="false" entity-id="dc9eb9eb-de04-4101-9c35-896ec403aeff">
+                    <lane isChoiceOtherwiseLane="false" index="43" hadOnlyOneElement="false" entity-id="58e5e78c-580f-4ebb-b9c2-a4b7b6365c83">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/ee/jdbc/endpoint" name="Update Customer" entity-id="Database#3">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
@@ -661,7 +614,7 @@
                             </properties>
                         </endpoint>
                     </lane>
-                    <lane isChoiceOtherwiseLane="true" index="47" hadOnlyOneElement="false" entity-id="56dad832-674c-44fc-a637-1f9a5d7a73f1">
+                    <lane isChoiceOtherwiseLane="true" index="47" hadOnlyOneElement="false" entity-id="3c74813a-b6bb-42dc-bf25-e680c8ebc72c">
                         <endpoint message-exchange-pattern="OneWay" direction="Outbound" type="http://www.mulesoft.org/schema/mule/ee/jdbc/endpoint" name="Create Customer" entity-id="Database#4">
                             <properties>
 <property value="one-way" name="exchange-pattern"/>
@@ -709,7 +662,7 @@
             </splitter>
             <scope type="http://www.mulesoft.org/schema/mule/core/catch-exception-strategy" name="Catch Exception Strategy" entity-id="Catch Exception Strategy#1">
                 <properties>
-                    <property name="labelConfigureConditionalExecutionUsingExpression"/>
+                    <property name=""/>
                     <property name="when"/>
                     <property name="enableNotifications"/>
                     <property value="50" name="auxiliary;index"/>
@@ -733,4 +686,5 @@
             </scope>
         </lane>
     </flow>
+    <description></description>
 </mule-configuration>
